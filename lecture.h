@@ -5,4 +5,8 @@
 
 vector<string> lecture(const string& strNomDuFichier);
 
+void inverser(vector<string>& vDictionnaire);
+
+void trier(vector<string>& vDictionnaire);
+
 #endif //LAB9_LECTURE_H

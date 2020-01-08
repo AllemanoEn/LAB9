@@ -7,15 +7,21 @@
 using namespace std;
 
 int main() {
-    vector<string> v = lecture("../dico_test.txt");
+    string strMot = "Coding";
 
-    cout << rechercheLineaire(v,"je");
+    vector<string> vDico = lecture("../dico_test.txt");
 
-    /*
-    for (const auto& i : v) {
+    cout << rechercheLineaire(vDico,strMot) << endl << endl;
+
+    auto resultat = rechercheLineaire(vDico.begin(),vDico.end(),strMot);
+
+    inverser(vDico);
+
+    trier(vDico);
+
+    for(const auto& i : vDico){
         cout << i << endl;
     }
-    */
 
     return 0;
 }
