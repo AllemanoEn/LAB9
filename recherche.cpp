@@ -4,6 +4,15 @@ using namespace std;
 
 size_t rechercheLineaire(const vector<string>& vDictionnaire, const string& strMotAChercher){
 
-    return 1;
+    int iPos = 1;
+
+    for(const auto& i : vDictionnaire){
+        if(i==strMotAChercher){
+            return iPos;
+        }
+        iPos++;
+    }
+
+    return -1;
 }
 
