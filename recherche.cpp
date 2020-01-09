@@ -4,7 +4,7 @@ using namespace std;
 
 size_t rechercheLineaire(const vector<string>& vDictionnaire, const string& strMotAChercher){
 
-    int iPos = 1;
+    int iPos = 0;
 
     for(const auto& i : vDictionnaire){
         if(i==strMotAChercher){
@@ -29,5 +29,25 @@ vector<string>::iterator rechercheLineaire(vector<string>::iterator itDebut, vec
 
 size_t rechercheDichotomique(const vector<string>& vDictionnaire, const string& strMotAChercher){
 
+    int taille = vDictionnaire.size();
+    int iLePlusPetit = 0;
+    int iLePlusGrand = taille - 1;
+    while (iLePlusPetit <= iLePlusGrand) {
+        int mid = iLePlusPetit + (iLePlusGrand - iLePlusPetit) / 2;
+        int res;
+        if (strMotAChercher == vDictionnaire.at(mid)){
+            res = 0;
+        }
+        if (res == 0){
+            return mid;
+        }
+        if (strMotAChercher > vDictionnaire.at(mid)){
+            iLePlusPetit = mid + 1;
+        }else{
+            iLePlusGrand = mid - 1;
+        }
+    }
+
+    return -1;
 }
 

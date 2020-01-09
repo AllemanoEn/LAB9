@@ -13,15 +13,23 @@ int main() {
 
     cout << rechercheLineaire(vDico,strMot) << endl << endl;
 
-    auto resultat = rechercheLineaire(vDico.begin(),vDico.end(),strMot);
-
-    inverser(vDico);
-
-    trier(vDico);
-
+    //Affichage du dico
     for(const auto& i : vDico){
         cout << i << endl;
     }
+
+    trier(vDico);
+
+    cout << rechercheDichotomique(vDico,strMot) << endl << endl;;
+    
+    //Affichage du dico
+    for(const auto& i : vDico){
+        cout << i << endl;
+    }
+
+    auto resultat = rechercheLineaire(vDico.begin(),vDico.end(),strMot);
+
+    inverser(vDico);
 
     return 0;
 }
