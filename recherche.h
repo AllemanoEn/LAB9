@@ -7,7 +7,7 @@ using namespace std;
 
 size_t rechercheLineaire(const vector<string>& vDictionnaire, const string& strMotAChercher);
 
-vector<string>::iterator rechercheLineaire(vector<string>::iterator itDebut, vector<string>::iterator itFin, const string& strMotAChercher);
+vector<string>::iterator rechercheLineaire(const vector<string>::iterator& itDebut, const vector<string>::iterator& itFin, const string& strMotAChercher);
 
 size_t rechercheDichotomique(const vector<string>& vDictionnaire, const string& strMotAChercher);
 

@@ -42,12 +42,6 @@ void trier(vector<string>& vDictionnaire){
                 temp = vDictionnaire.at(j);
                 vDictionnaire.at(j) = vDictionnaire.at(i);
                 vDictionnaire.at(i) = temp;
-
-                /*
-                strcpy(temp, vDictionnaire.at(j));
-                strcpy(vDictionnaire.at(j), vDictionnaire.at(i));
-                strcpy(vDictionnaire.at(i), temp);
-                 */
             }
         }
     }

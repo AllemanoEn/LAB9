@@ -7,7 +7,7 @@
 using namespace std;
 
 int main() {
-    string strMot = "Coding";
+    string strMot = "bbbbbbbbbbb";
 
     vector<string> vDico = lecture("../dico_test.txt");
 
@@ -21,7 +21,8 @@ int main() {
     trier(vDico);
 
     cout << rechercheDichotomique(vDico,strMot) << endl << endl;;
-    
+    rechercheDichotomique(vDico.begin(),vDico.end(),strMot);
+
     //Affichage du dico
     for(const auto& i : vDico){
         cout << i << endl;

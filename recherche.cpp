@@ -16,7 +16,7 @@ size_t rechercheLineaire(const vector<string>& vDictionnaire, const string& strM
     return -1;
 }
 
-vector<string>::iterator rechercheLineaire(vector<string>::iterator itDebut, vector<string>::iterator itFin, const string& strMotAChercher){
+vector<string>::iterator rechercheLineaire(const vector<string>::iterator& itDebut, const vector<string>::iterator& itFin, const string& strMotAChercher){
 
     for (auto i = itDebut; i != itFin; ++i){
         if(*i == strMotAChercher){
@@ -30,24 +30,58 @@ vector<string>::iterator rechercheLineaire(vector<string>::iterator itDebut, vec
 size_t rechercheDichotomique(const vector<string>& vDictionnaire, const string& strMotAChercher){
 
     int taille = vDictionnaire.size();
-    int iLePlusPetit = 0;
-    int iLePlusGrand = taille - 1;
-    while (iLePlusPetit <= iLePlusGrand) {
-        int mid = iLePlusPetit + (iLePlusGrand - iLePlusPetit) / 2;
-        int res;
-        if (strMotAChercher == vDictionnaire.at(mid)){
-            res = 0;
-        }
-        if (res == 0){
-            return mid;
-        }
-        if (strMotAChercher > vDictionnaire.at(mid)){
-            iLePlusPetit = mid + 1;
-        }else{
-            iLePlusGrand = mid - 1;
+
+    if(taille) {
+        size_t iLePlusPetit = 0;
+        size_t iLePlusGrand = taille - 1;
+        while (iLePlusPetit <= iLePlusGrand) {
+            int mid = iLePlusPetit + (iLePlusGrand - iLePlusPetit) / 2;
+            int res = 0;
+            if (strMotAChercher == vDictionnaire.at(mid)) {
+                res = 1;
+            }
+
+            if (res == 1) {
+                return mid;
+            }
+
+            if (strMotAChercher > vDictionnaire.at(mid)) {
+                iLePlusPetit = mid + 1;
+            } else {
+                iLePlusGrand = mid - 1;
+            }
         }
     }
 
     return -1;
+}
+
+vector<string>::iterator rechercheDichotomique(vector<string>::iterator itDebut, vector<string>::iterator itFin, const string& strMotAChercher){
+
+
+    if(!(itFin->empty())) {
+
+        auto iLePlusPetit = itDebut;
+        auto iLePlusGrand = itFin - 1;
+        for (auto i = itDebut; i < itFin; ++i) {
+            auto mid = iLePlusPetit + (iLePlusGrand - iLePlusPetit) / 2;
+            int res = 0;
+            if (strMotAChercher == (i.at(mid))) {
+                res = 1;
+            }
+
+            if (res == 1) {
+                return mid;
+            }
+
+            if (strMotAChercher > vDictionnaire.at(mid)) {
+                iLePlusPetit = mid + 1;
+            } else {
+                iLePlusGrand = mid - 1;
+            }
+        }
+    }
+
+    return itFin;
 }
 
