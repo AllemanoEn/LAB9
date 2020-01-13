@@ -52,7 +52,6 @@ size_t rechercheDichotomique(const vector<string>& vDictionnaire, const string& 
             }
         }
     }
-
     return -1;
 }
 
@@ -61,27 +60,44 @@ vector<string>::iterator rechercheDichotomique(vector<string>::iterator itDebut,
 
     if(!(itFin->empty())) {
 
-        auto iLePlusPetit = itDebut;
-        auto iLePlusGrand = itFin - 1;
-        for (auto i = itDebut; i < itFin; ++i) {
-            auto mid = iLePlusPetit + (iLePlusGrand - iLePlusPetit) / 2;
+        auto iLePlusPetit = 0;
+        auto iLePlusGrand = distance(itDebut,itFin) -1;
+
+        while (itDebut <= itFin) {
+            int mid = iLePlusPetit + (iLePlusGrand - iLePlusPetit) / 2;
             int res = 0;
-            if (strMotAChercher == (i.at(mid))) {
-                res = 1;
+            auto i = itDebut;
+            for (; i != itFin ; ++i) {
+                if (strMotAChercher == *i && mid == distance(itDebut,i)) {
+                    res = 1;
+                    break;
+                }
             }
 
             if (res == 1) {
-                return mid;
+                return i;
             }
 
-            if (strMotAChercher > vDictionnaire.at(mid)) {
-                iLePlusPetit = mid + 1;
-            } else {
-                iLePlusGrand = mid - 1;
+            i =itDebut;
+
+            for (; i != itFin ; ++i) {
+                if (strMotAChercher > *i && mid == distance(itDebut,i)) {
+                    iLePlusPetit = mid + 1;
+                    itDebut + iLePlusPetit;
+                    break;
+                }
+                if(strMotAChercher < *i && mid == distance(itDebut,i)) {
+                    iLePlusGrand = mid - 1;
+                    itFin - iLePlusGrand;
+                    break;
+                }
             }
         }
     }
-
     return itFin;
 }
 
+size_t rechercheDichotomiqueRecursive(const vector<string>& vDictionnaire, const string& strMotAChercher){
+
+    return  -1;
+}
