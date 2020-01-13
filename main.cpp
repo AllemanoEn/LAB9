@@ -15,7 +15,7 @@ void affichageVecteur(const vector<string>& v){
 }
 
 int main() {
-    string strMot = "HES";
+    string strMot = "baab";
 
     vector<string> vDico = lecture("../dico_test.txt");
 
@@ -38,14 +38,19 @@ int main() {
     cout << endl << "rechercheDichotomique(vDico,strMot)" << endl;
 
     cout << rechercheDichotomique(vDico,strMot) << endl << endl;
-    //auto resultat2 = rechercheDichotomique(vDico.begin(),vDico.end(),strMot);
+    auto resultat2 = rechercheDichotomique(vDico.begin(),vDico.end(),strMot);
 
     //Affichage du dico
     affichageVecteur(vDico);
 
-    /*
     cout << "rechercheDichotomiqueRecursive(vDico,strMot,first,last)" << endl;
     cout << rechercheDichotomiqueRecursive(vDico,strMot,0,6) << endl << endl;
+
+    //Affichage du dico
+    affichageVecteur(vDico);
+
+    /*cout << "rechercheDichotomiqueRecursive(vDico,begin,end,strMot)" << endl;
+    cout << rechercheDichotomiqueRecursive(vDico.begin(),vDico.end(),strMot) << endl << endl;
 
     //Affichage du dico
     affichageVecteur(vDico);
@@ -57,7 +62,6 @@ int main() {
 
     //Affichage du dico
     affichageVecteur(vDico);
-     */
-
+*/
     return 0;
 }
