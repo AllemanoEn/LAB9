@@ -29,13 +29,13 @@ vector<string>::iterator rechercheLineaire(const vector<string>::iterator& itDeb
 
 size_t rechercheDichotomique(const vector<string>& vDictionnaire, const string& strMotAChercher){
 
-    int taille = vDictionnaire.size();
+    size_t taille = vDictionnaire.size();
 
     if(taille) {
-        size_t iLePlusPetit = 0;
-        size_t iLePlusGrand = taille - 1;
+        int iLePlusPetit = 0;
+        int iLePlusGrand = taille - 1;
         while (iLePlusPetit <= iLePlusGrand) {
-            int mid = iLePlusPetit + (iLePlusGrand - iLePlusPetit) / 2;
+            size_t mid = iLePlusPetit + (iLePlusGrand - iLePlusPetit) / 2;
             int res = 0;
             if (strMotAChercher == vDictionnaire.at(mid)) {
                 res = 1;
@@ -78,7 +78,7 @@ vector<string>::iterator rechercheDichotomique(vector<string>::iterator itDebut,
                 return i;
             }
 
-            i =itDebut;
+            i = itDebut;
 
             for (; i != itFin ; ++i) {
                 if (strMotAChercher > *i && mid == distance(itDebut,i)) {
@@ -98,6 +98,35 @@ vector<string>::iterator rechercheDichotomique(vector<string>::iterator itDebut,
 }
 
 size_t rechercheDichotomiqueRecursive(const vector<string>& vDictionnaire, const string& strMotAChercher){
+    return -1;
+}
 
-    return  -1;
+size_t rechercheDichotomiqueRecursive(const vector<string>& vDictionnaire, const string& strMotAChercher, size_t first, size_t last){
+
+    size_t taille = vDictionnaire.size();
+
+    if(taille) {
+
+        if(first <= last) {
+            size_t mid = first + (last - first) / 2;
+            int res = 0;
+            if (strMotAChercher == vDictionnaire.at(mid)) {
+                res = 1;
+            }
+
+            if (res == 1) {
+                return mid;
+            }
+
+            if (strMotAChercher > vDictionnaire.at(mid)) {
+                first = mid + 1;
+            } else {
+                last = mid - 1;
+            }
+
+            rechercheDichotomiqueRecursive(vDictionnaire,strMotAChercher,first,last);
+
+        }
+    }
+    return -1;
 }
