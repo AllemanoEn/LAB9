@@ -15,7 +15,7 @@ void affichageVecteur(const vector<string>& v){
 }
 
 int main() {
-    string strMot = "baab";
+    string strMot = "HES";
 
     vector<string> vDico = lecture("../dico_test.txt");
 
@@ -26,7 +26,7 @@ int main() {
 
     //Attention, le resultat de la fonction va changer au cours du programme car on va par
     //la suite trier le dico. Donc le résultat de l'itérateur va changer et modifier la varaible resultat.
-    auto resultat = rechercheLineaire(vDico.begin(),vDico.end(),strMot);
+    rechercheLineaire(vDico.begin(),vDico.end(),strMot);
 
     //Affichage du dico
     affichageVecteur(vDico);
@@ -38,18 +38,18 @@ int main() {
     cout << endl << "rechercheDichotomique(vDico,strMot)" << endl;
 
     cout << rechercheDichotomique(vDico,strMot) << endl << endl;
-    auto resultat2 = rechercheDichotomique(vDico.begin(),vDico.end(),strMot);
+    rechercheDichotomique(vDico.begin(),vDico.end(),strMot);
 
     //Affichage du dico
     affichageVecteur(vDico);
 
     cout << "rechercheDichotomiqueRecursive(vDico,strMot,first,last)" << endl;
-    cout << rechercheDichotomiqueRecursive(vDico,strMot,0,6) << endl << endl;
+    cout << rechercheDichotomiqueRecursive(vDico,strMot,0,7) << endl << endl;
 
     //Affichage du dico
     affichageVecteur(vDico);
 
-    /*cout << "rechercheDichotomiqueRecursive(vDico,begin,end,strMot)" << endl;
+    cout << "rechercheDichotomiqueRecursive(begin,end,strMot)" << endl;
     cout << rechercheDichotomiqueRecursive(vDico.begin(),vDico.end(),strMot) << endl << endl;
 
     //Affichage du dico
@@ -62,6 +62,6 @@ int main() {
 
     //Affichage du dico
     affichageVecteur(vDico);
-*/
+
     return 0;
 }

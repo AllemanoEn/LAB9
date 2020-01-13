@@ -86,7 +86,9 @@ vector<string>::iterator rechercheDichotomique(vector<string>::iterator itDebut,
 }
 
 size_t rechercheDichotomiqueRecursive(const vector<string>& vDictionnaire, const string& strMotAChercher){
-    return -1;
+
+    return rechercheDichotomiqueRecursive(vDictionnaire,strMotAChercher,0,vDictionnaire.size());
+
 }
 
 size_t rechercheDichotomiqueRecursive(const vector<string>& vDictionnaire, const string& strMotAChercher, size_t first, size_t last){
@@ -98,7 +100,7 @@ size_t rechercheDichotomiqueRecursive(const vector<string>& vDictionnaire, const
         if(first <= last) {
             size_t mid = first + (last - first) / 2;
             int res = 0;
-            if (strMotAChercher == vDictionnaire.at(mid)) {
+            if (mid != last && strMotAChercher == vDictionnaire.at(mid)) {
                 res = 1;
             }
 
@@ -106,17 +108,17 @@ size_t rechercheDichotomiqueRecursive(const vector<string>& vDictionnaire, const
                 return mid;
             }
 
-            if(mid == 0){
+            if(mid == 0 || mid == last-1){
                 return -1;
             }
 
             if (strMotAChercher > vDictionnaire.at(mid)) {
-                first = mid + 1;
+                first = mid;
             } else {
-                last = mid - 1;
+                last = mid;
             }
 
-            rechercheDichotomiqueRecursive(vDictionnaire,strMotAChercher,first,last);
+            return rechercheDichotomiqueRecursive(vDictionnaire,strMotAChercher,first,last);
 
         }
     }
@@ -149,7 +151,7 @@ bool rechercheDichotomiqueRecursive(vector<string>::iterator itDebut, vector<str
                 itFin -= mid;
             }
 
-            rechercheDichotomiqueRecursive(itDebut,itFin,strMotAChercher);
+            return rechercheDichotomiqueRecursive(itDebut,itFin,strMotAChercher);
 
         }
     }
