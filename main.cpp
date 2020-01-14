@@ -1,3 +1,14 @@
+/// \file lecture.h
+/// \authors Enzo Allemano, Jonathan Stochetti, Nicolas Viotti
+/// \date 14.01.2020
+///
+/// \brief \b Laboratoire \b 09
+/// \brief Ce programme permet de chercher un mot avec plusieurs méthodes (voir recherche.h \brief ) dans un fichier.txt
+///
+/// Remarque(s) : Modifier la variable STRMOT pour changer le mot à chercher
+/// Modifier STRNOMDUFICHIER pour changer le fichier dans lequel exécuter la recherche
+///
+/// Compilateur : MinGw-g++ 6.3.0
 #include <iostream>
 #include "recherche.cpp"
 #include "lecture.cpp"
@@ -15,21 +26,21 @@ void affichageVecteur(const vector<string>& v){
 }
 
 int main() {
-    string strMot = "HES";
-
-    vector<string> vDico = lecture("../dico_test.txt");
+    const string STRMOT = "bbaaaab";
+    const string STRNOMDUFICHIER = "../dico_text.txt";
+    vector<string> vDico = lecture(STRNOMDUFICHIER);
 
     if(!vDico.empty()){
 
 
-        cout << "Mot a chercher : " << strMot << endl;
+        cout << "Mot a chercher : " << STRMOT << endl;
 
         cout << "rechercheLineaire(vDico,strMot)" << endl;
-        cout << rechercheLineaire(vDico, strMot) << endl << endl;
+        cout << rechercheLineaire(vDico, STRMOT) << endl << endl;
 
         //Attention, le resultat de la fonction va changer au cours du programme car on va par
-        //la suite trier le dico. Donc le résultat de l'itérateur va changer et modifier la varaible resultat.
-        rechercheLineaire(vDico.begin(), vDico.end(), strMot);
+        //la suite trier le dico. Donc le résultat de l'itérateur va changer et modifier la variable resultat.
+        rechercheLineaire(vDico.begin(), vDico.end(), STRMOT);
 
         //Affichage du dico
         affichageVecteur(vDico);
@@ -40,20 +51,20 @@ int main() {
 
         cout << endl << "rechercheDichotomique(vDico,strMot)" << endl;
 
-        cout << rechercheDichotomique(vDico, strMot) << endl << endl;
-        rechercheDichotomique(vDico.begin(), vDico.end(), strMot);
+        cout << rechercheDichotomique(vDico, STRMOT) << endl << endl;
+        rechercheDichotomique(vDico.begin(), vDico.end(), STRMOT);
 
         //Affichage du dico
         affichageVecteur(vDico);
 
         cout << "rechercheDichotomiqueRecursive(vDico,strMot,first,last)" << endl;
-        cout << rechercheDichotomiqueRecursive(vDico, strMot, 0, 7) << endl << endl;
+        cout << rechercheDichotomiqueRecursive(vDico, STRMOT, 0, 7) << endl << endl;
 
         //Affichage du dico
         affichageVecteur(vDico);
 
         cout << "rechercheDichotomiqueRecursive(begin,end,strMot)" << endl;
-        cout << rechercheDichotomiqueRecursive(vDico.begin(), vDico.end(), strMot) << endl << endl;
+        cout << rechercheDichotomiqueRecursive(vDico.begin(), vDico.end(), STRMOT) << endl << endl;
 
         //Affichage du dico
         affichageVecteur(vDico);
