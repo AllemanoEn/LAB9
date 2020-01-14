@@ -15,7 +15,7 @@ void affichageVecteur(const vector<string>& v){
 }
 
 int main() {
-    string strMot = "bbaaaab";
+    string strMot = "HES";
 
     vector<string> vDico = lecture("../dico_test.txt");
 

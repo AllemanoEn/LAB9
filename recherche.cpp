@@ -2,11 +2,10 @@
 
 using namespace std;
 
-/// \name
-/// \brief
-/// \param vDictionnaire
-/// \param strMotAChercher
-/// \return
+/// \brief fonction qui va chercher de manière linéaire un mot donné dans un vecteur donné.
+/// \param vDictionnaire : vecteur qui contient un ensemble de mots.
+/// \param strMotAChercher : mot à chercher dans le vecteur.
+/// \return retourne l'indice de l'élément trouvé si le mot est présent dans le vecteur et size_t(-1) sinon.
 size_t rechercheLineaire(const vector<string>& vDictionnaire, const string& strMotAChercher){
 
     int iPos = 0;
@@ -21,6 +20,11 @@ size_t rechercheLineaire(const vector<string>& vDictionnaire, const string& strM
     return -1;
 }
 
+/// \brief fonction qui va chercher de manière linéaire un mot donné dans un intervalle de deux itérateurs.
+/// \param itDebut : représente le début d'un vecteur (begin)
+/// \param itFin : représente la fin d'un vecteur (end)
+/// \param strMotAChercher : mot à chercher dans l'intervalle d'itérateur.
+/// \return retourne l'itérateur pointant vers l'élément trouvé. Sinon, elle retourne dico.end().
 vector<string>::iterator rechercheLineaire(const vector<string>::iterator& itDebut, const vector<string>::iterator& itFin, const string& strMotAChercher){
 
     for (auto i = itDebut; i != itFin; ++i){
@@ -32,10 +36,14 @@ vector<string>::iterator rechercheLineaire(const vector<string>::iterator& itDeb
     return itFin;
 }
 
+/// \brief fonction qui va chercher de manière dichotomique un mot donné dans un vecteur donné.
+/// \param vDictionnaire : vecteur qui contient un ensemble de mots.
+/// \param strMotAChercher : mot à chercher dans le vecteur.
+/// \return retourne l'indice de l'élément trouvé si le mot est présent dans le vecteur et size_t(-1) sinon.
 size_t rechercheDichotomique(const vector<string>& vDictionnaire, const string& strMotAChercher){
 
     size_t taille = vDictionnaire.size();
-    
+
     int iLePlusPetit = 0;
     int iLePlusGrand = taille - 1;
     while (iLePlusPetit <= iLePlusGrand) {
@@ -58,6 +66,11 @@ size_t rechercheDichotomique(const vector<string>& vDictionnaire, const string& 
     return -1;
 }
 
+/// \brief fonction qui va chercher de manière dichotomique un mot donné dans un intervalle de deux itérateurs.
+/// \param itDebut : représente le début d'un vecteur (begin)
+/// \param itFin : représente la fin d'un vecteur (end)
+/// \param strMotAChercher : mot à chercher dans l'intervalle d'itérateur.
+/// \return retourne l'itérateur pointant vers l'élément trouvé. Sinon, elle retourne dico.end().
 vector<string>::iterator rechercheDichotomique(vector<string>::iterator itDebut, vector<string>::iterator itFin, const string& strMotAChercher){
 
     while (itDebut <= itFin) {
@@ -85,12 +98,23 @@ vector<string>::iterator rechercheDichotomique(vector<string>::iterator itDebut,
     return itFin;
 }
 
+/// \brief fonction recursive qui va chercher de manière dichotomique un mot donné dans un vecteur donné.
+/// \param vDictionnaire : vecteur qui contient un ensemble de mots.
+/// \param strMotAChercher : mot à chercher dans le vecteur.
+/// \return retourne l'indice de l'élément trouvé si le mot est présent dans le vecteur et size_t(-1) sinon.
 size_t rechercheDichotomiqueRecursive(const vector<string>& vDictionnaire, const string& strMotAChercher){
 
     return rechercheDichotomiqueRecursive(vDictionnaire,strMotAChercher,0,vDictionnaire.size());
 
 }
 
+/// \brief fonction recursive qui va chercher de manière dichotomique un mot donné dans un vecteur donné.
+/// \brief la recherche se fait dans un intervalle qui est définit dans les paramètres.
+/// \param vDictionnaire : vecteur qui contient un ensemble de mots.
+/// \param strMotAChercher : mot à chercher dans le vecteur.
+/// \param first : debut de l'intervalle (compris)
+/// \param last : fin de l'intervalle (non-compris)
+/// \return retourne l'indice de l'élément trouvé si le mot est présent dans le vecteur et size_t(-1) sinon.
 size_t rechercheDichotomiqueRecursive(const vector<string>& vDictionnaire, const string& strMotAChercher, size_t first, size_t last){
 
     if(first <= last) {
@@ -120,6 +144,11 @@ size_t rechercheDichotomiqueRecursive(const vector<string>& vDictionnaire, const
     return -1;
 }
 
+/// \brief fonction recursive qui va chercher de manière dichotomique un mot donné dans un intervalle de deux itérateurs.
+/// \param itDebut : représente le début d'un vecteur (begin)
+/// \param itFin : représente la fin d'un vecteur (end)
+/// \param strMotAChercher : mot à chercher dans l'intervalle d'itérateur.
+/// \return retourne 1 si le mot est trouvé et 0 sinon.
 bool rechercheDichotomiqueRecursive(vector<string>::iterator itDebut, vector<string>::iterator itFin, const string& strMotAChercher){
 
     while (itDebut <= itFin) {
