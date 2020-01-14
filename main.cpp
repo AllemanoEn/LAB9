@@ -26,8 +26,8 @@ void affichageVecteur(const vector<string>& v){
 }
 
 int main() {
-    const string STRMOT = "bbaaaab";
-    const string STRNOMDUFICHIER = "../dico_text.txt";
+    const string STRMOT = "bbababa";
+    const string STRNOMDUFICHIER = "../dico_test.txt";
     vector<string> vDico = lecture(STRNOMDUFICHIER);
 
     if(!vDico.empty()){
