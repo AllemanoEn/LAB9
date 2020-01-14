@@ -15,53 +15,60 @@ void affichageVecteur(const vector<string>& v){
 }
 
 int main() {
-    string strMot = "HES";
+    string strMot = "bbaaaab";
 
     vector<string> vDico = lecture("../dico_test.txt");
 
-    cout << "Mot a chercher : " << strMot << endl;
+    if(!vDico.empty()){
 
-    cout << "rechercheLineaire(vDico,strMot)" << endl;
-    cout << rechercheLineaire(vDico,strMot) << endl << endl;
 
-    //Attention, le resultat de la fonction va changer au cours du programme car on va par
-    //la suite trier le dico. Donc le résultat de l'itérateur va changer et modifier la varaible resultat.
-    rechercheLineaire(vDico.begin(),vDico.end(),strMot);
+        cout << "Mot a chercher : " << strMot << endl;
 
-    //Affichage du dico
-    affichageVecteur(vDico);
+        cout << "rechercheLineaire(vDico,strMot)" << endl;
+        cout << rechercheLineaire(vDico, strMot) << endl << endl;
 
-    //Trie le vecteur vDico pour la recherche dichotomique
-    cout << endl << "trie du dictionnaire" << endl;
-    trier(vDico);
+        //Attention, le resultat de la fonction va changer au cours du programme car on va par
+        //la suite trier le dico. Donc le résultat de l'itérateur va changer et modifier la varaible resultat.
+        rechercheLineaire(vDico.begin(), vDico.end(), strMot);
 
-    cout << endl << "rechercheDichotomique(vDico,strMot)" << endl;
+        //Affichage du dico
+        affichageVecteur(vDico);
 
-    cout << rechercheDichotomique(vDico,strMot) << endl << endl;
-    rechercheDichotomique(vDico.begin(),vDico.end(),strMot);
+        //Trie le vecteur vDico pour la recherche dichotomique
+        cout << endl << "trie du dictionnaire" << endl;
+        trier(vDico);
 
-    //Affichage du dico
-    affichageVecteur(vDico);
+        cout << endl << "rechercheDichotomique(vDico,strMot)" << endl;
 
-    cout << "rechercheDichotomiqueRecursive(vDico,strMot,first,last)" << endl;
-    cout << rechercheDichotomiqueRecursive(vDico,strMot,0,7) << endl << endl;
+        cout << rechercheDichotomique(vDico, strMot) << endl << endl;
+        rechercheDichotomique(vDico.begin(), vDico.end(), strMot);
 
-    //Affichage du dico
-    affichageVecteur(vDico);
+        //Affichage du dico
+        affichageVecteur(vDico);
 
-    cout << "rechercheDichotomiqueRecursive(begin,end,strMot)" << endl;
-    cout << rechercheDichotomiqueRecursive(vDico.begin(),vDico.end(),strMot) << endl << endl;
+        cout << "rechercheDichotomiqueRecursive(vDico,strMot,first,last)" << endl;
+        cout << rechercheDichotomiqueRecursive(vDico, strMot, 0, 7) << endl << endl;
 
-    //Affichage du dico
-    affichageVecteur(vDico);
+        //Affichage du dico
+        affichageVecteur(vDico);
 
-    //Test de la fonction inverser
-    inverser(vDico);
+        cout << "rechercheDichotomiqueRecursive(begin,end,strMot)" << endl;
+        cout << rechercheDichotomiqueRecursive(vDico.begin(), vDico.end(), strMot) << endl << endl;
 
-    cout << endl << "Dico inverse"<< endl << endl;
+        //Affichage du dico
+        affichageVecteur(vDico);
 
-    //Affichage du dico
-    affichageVecteur(vDico);
+        //Test de la fonction inverser
+        inverser(vDico);
+
+        cout << endl << "Dico inverse" << endl << endl;
+
+        //Affichage du dico
+        affichageVecteur(vDico);
+    }
+    else{
+        cout << "Fichier texte vide !";
+    }
 
     return 0;
 }

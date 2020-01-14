@@ -20,7 +20,10 @@ vector<string> lecture(const string& strNomDuFichier){
 
     while (!inputFile.eof()){
         getline(inputFile,line);
-        vDictionnaire.push_back(line);
+
+        if(!line.empty()){
+            vDictionnaire.push_back(line);
+        }
     }
 
     inputFile.close();
