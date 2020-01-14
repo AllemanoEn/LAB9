@@ -17,7 +17,6 @@ using namespace std;
 /// \return Retourne le vecteur contenant les lignes du fichier qui a été lu
 vector<string> lecture(const string& strNomDuFichier){
     vector<string> vDictionnaire;
-    vector<string> vError {"Impossible de lire le fichier"};
 
     string line;
     ifstream inputFile;
@@ -26,7 +25,7 @@ vector<string> lecture(const string& strNomDuFichier){
     if(inputFile.fail()){
         cerr << "Le fichier n'a pas pu s'ouvrir";
         inputFile.close();
-        return vError;
+        return vDictionnaire;
     }
 
     while (!inputFile.eof()){

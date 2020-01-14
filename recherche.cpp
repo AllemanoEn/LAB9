@@ -1,3 +1,10 @@
+/// \file recherche.cpp
+/// \authors Enzo Allemano, Jonathan Stochetti, Nicolas Viotti
+/// \date 14.01.2020
+///
+/// Remarque :
+///
+/// Compilateur : MinGw-g++ 6.3.0
 #include "recherche.h"
 
 using namespace std;
@@ -73,6 +80,8 @@ size_t rechercheDichotomique(const vector<string>& vDictionnaire, const string& 
 /// \return retourne l'itérateur pointant vers l'élément trouvé. Sinon, elle retourne dico.end().
 vector<string>::iterator rechercheDichotomique(vector<string>::iterator itDebut, vector<string>::iterator itFin, const string& strMotAChercher){
 
+    auto resultatErreur = itFin;
+
     while (itDebut <= itFin) {
         int mid = distance(itDebut,itFin) / 2;
         int res = 0;
@@ -86,7 +95,7 @@ vector<string>::iterator rechercheDichotomique(vector<string>::iterator itDebut,
         }
 
         if(mid == 0){
-            return itFin;
+            return resultatErreur;
         }
 
         if (strMotAChercher > *(itDebut + mid)) {
@@ -95,7 +104,7 @@ vector<string>::iterator rechercheDichotomique(vector<string>::iterator itDebut,
             itFin -= mid;
         }
     }
-    return itFin;
+    return resultatErreur;
 }
 
 /// \brief fonction recursive qui va chercher de manière dichotomique un mot donné dans un vecteur donné.

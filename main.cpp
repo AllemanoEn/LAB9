@@ -32,7 +32,6 @@ int main() {
 
     if(!vDico.empty()){
 
-
         cout << "Mot a chercher : " << STRMOT << endl;
 
         cout << "rechercheLineaire(vDico,strMot)" << endl;
@@ -78,7 +77,7 @@ int main() {
         affichageVecteur(vDico);
     }
     else{
-        cout << "Fichier texte vide !";
+        cout << "Fichier texte vide ou inexistant !" << endl;
     }
 
     return 0;
