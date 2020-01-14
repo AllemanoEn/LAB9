@@ -26,12 +26,12 @@ void affichageVecteur(const vector<string>& v){
 }
 
 int main() {
-    const string STRMOT = "bbababa";
-    const string STRNOMDUFICHIER = "../dico_test.txt";
+    const string STRMOT = "echo";
+    const string STRNOMDUFICHIER = "../dictionnaire-UNIX/dictionary.txt";
     vector<string> vDico = lecture(STRNOMDUFICHIER);
 
     if(!vDico.empty()){
-
+        /*
         cout << "Mot a chercher : " << STRMOT << endl;
 
         cout << "rechercheLineaire(vDico,strMot)" << endl;
@@ -42,11 +42,13 @@ int main() {
         rechercheLineaire(vDico.begin(), vDico.end(), STRMOT);
 
         //Affichage du dico
-        affichageVecteur(vDico);
-
+        //affichageVecteur(vDico);
+*/
         //Trie le vecteur vDico pour la recherche dichotomique
-        cout << endl << "trie du dictionnaire" << endl;
+        cout << endl << "tri du dictionnaire" << endl;
         trier(vDico);
+
+        affichageVecteur(vDico);
 
         cout << endl << "rechercheDichotomique(vDico,strMot)" << endl;
 
@@ -54,17 +56,17 @@ int main() {
         rechercheDichotomique(vDico.begin(), vDico.end(), STRMOT);
 
         //Affichage du dico
-        affichageVecteur(vDico);
+        //affichageVecteur(vDico);
 
         cout << "rechercheDichotomiqueRecursive(vDico,strMot,first,last)" << endl;
-        cout << rechercheDichotomiqueRecursive(vDico, STRMOT, 0, 7) << endl << endl;
+        cout << rechercheDichotomiqueRecursive(vDico, STRMOT) << endl << endl;
 
         //Affichage du dico
-        affichageVecteur(vDico);
+        //affichageVecteur(vDico);
 
         cout << "rechercheDichotomiqueRecursive(begin,end,strMot)" << endl;
         cout << rechercheDichotomiqueRecursive(vDico.begin(), vDico.end(), STRMOT) << endl << endl;
-
+/*
         //Affichage du dico
         affichageVecteur(vDico);
 
@@ -75,6 +77,7 @@ int main() {
 
         //Affichage du dico
         affichageVecteur(vDico);
+        */
     }
     else{
         cout << "Fichier texte vide ou inexistant !" << endl;
