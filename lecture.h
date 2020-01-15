@@ -21,4 +21,8 @@ void inverser(vector<string>& vDictionnaire);
 
 void trier(vector<string>& vDictionnaire);
 
+vector<string> lireTexte(const string& fichier);
+
+vector<string> separerMots(const string& ligne);
+
 #endif //LAB9_LECTURE_H

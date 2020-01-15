@@ -28,56 +28,11 @@ void affichageVecteur(const vector<string>& v){
 int main() {
     const string STRMOT = "echo";
     const string STRNOMDUFICHIER = "../dictionnaire-UNIX/dictionary.txt";
+    const string STRTEXTE = "../livre/input_sh.txt";
     vector<string> vDico = lecture(STRNOMDUFICHIER);
 
     if(!vDico.empty()){
-        /*
-        cout << "Mot a chercher : " << STRMOT << endl;
 
-        cout << "rechercheLineaire(vDico,strMot)" << endl;
-        cout << rechercheLineaire(vDico, STRMOT) << endl << endl;
-
-        //Attention, le resultat de la fonction va changer au cours du programme car on va par
-        //la suite trier le dico. Donc le résultat de l'itérateur va changer et modifier la variable resultat.
-        rechercheLineaire(vDico.begin(), vDico.end(), STRMOT);
-
-        //Affichage du dico
-        //affichageVecteur(vDico);
-*/
-        //Trie le vecteur vDico pour la recherche dichotomique
-        cout << endl << "tri du dictionnaire" << endl;
-        trier(vDico);
-
-        affichageVecteur(vDico);
-
-        cout << endl << "rechercheDichotomique(vDico,strMot)" << endl;
-
-        cout << rechercheDichotomique(vDico, STRMOT) << endl << endl;
-        rechercheDichotomique(vDico.begin(), vDico.end(), STRMOT);
-
-        //Affichage du dico
-        //affichageVecteur(vDico);
-
-        cout << "rechercheDichotomiqueRecursive(vDico,strMot,first,last)" << endl;
-        cout << rechercheDichotomiqueRecursive(vDico, STRMOT) << endl << endl;
-
-        //Affichage du dico
-        //affichageVecteur(vDico);
-
-        cout << "rechercheDichotomiqueRecursive(begin,end,strMot)" << endl;
-        cout << rechercheDichotomiqueRecursive(vDico.begin(), vDico.end(), STRMOT) << endl << endl;
-/*
-        //Affichage du dico
-        affichageVecteur(vDico);
-
-        //Test de la fonction inverser
-        inverser(vDico);
-
-        cout << endl << "Dico inverse" << endl << endl;
-
-        //Affichage du dico
-        affichageVecteur(vDico);
-        */
     }
     else{
         cout << "Fichier texte vide ou inexistant !" << endl;
