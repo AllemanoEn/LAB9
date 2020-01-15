@@ -22,17 +22,32 @@ void affichageVecteur(const vector<string>& v){
     for(const auto& i : v){
         cout << i << endl;
     }
-    cout << endl;
 }
 
 int main() {
-    const string STRMOT = "echo";
-    const string STRNOMDUFICHIER = "../dictionnaire-UNIX/dictionary.txt";
-    const string STRTEXTE = "../livre/input_sh.txt";
+    const string STRNOMDUFICHIER = "../dictionnaire-UNIX/ordered_dictionary.txt";
+    const string STRLIVRE = "../livre/input_sh.txt";
     vector<string> vDico = lecture(STRNOMDUFICHIER);
+    vector<string> vLivre = lireTexte(STRLIVRE);
+    vector<string> vLivreFormate;
+    vector<string> vMotAMot;
 
-    if(!vDico.empty()){
+    size_t valeur = -1;
 
+    trier(vLivreFormate);
+
+    if(!vDico.empty() && !vLivre.empty()){
+
+        for(const auto& str : vLivre){
+            vMotAMot = separerMots(str);
+            vLivreFormate.insert(vLivreFormate.end(),vMotAMot.begin(),vMotAMot.end());
+        }
+
+        for(const auto& mot : vLivreFormate) {
+            if (valeur == rechercheDichotomique(vDico, normaliserMot(mot))) {
+                cout << rechercheLineaire(vLivreFormate, mot) << " : " << mot << endl;
+            }
+        }
     }
     else{
         cout << "Fichier texte vide ou inexistant !" << endl;

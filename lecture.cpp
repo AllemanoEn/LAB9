@@ -9,6 +9,7 @@
 #include "lecture.h"
 
 #include <fstream>
+#include <string>
 
 using namespace std;
 
@@ -78,7 +79,29 @@ void trier(vector<string>& vDictionnaire){
          ligne du fichier
  */
 vector<string> lireTexte(const string& fichier){
+    vector<string> vLivre;
 
+    string line;
+    ifstream inputFile;
+    inputFile.open(fichier);
+
+    if(inputFile.fail()){
+        cerr << "Le fichier n'a pas pu s'ouvrir";
+        inputFile.close();
+        return vLivre;
+    }
+
+    while (!inputFile.eof()){
+        getline(inputFile,line);
+
+        if(!line.empty()){
+            vLivre.push_back(line);
+        }
+    }
+
+    inputFile.close();
+
+    return vLivre;
 }
 
 /**
@@ -95,4 +118,47 @@ vector<string> lireTexte(const string& fichier){
  */
 vector<string> separerMots(const string& ligne){
 
+    vector<string> vResultat;
+    string strMot;
+
+    for(auto str : ligne){
+        if(!isalpha(str)){
+            if(str != '\''){
+                if(!strMot.empty()){
+                    if(strMot.at(strMot.size()-1) == '\''){
+                        strMot.erase(strMot.size()-1);
+                    }
+                    vResultat.push_back(strMot);
+                    strMot.clear();
+                }
+            }else{
+                if(!strMot.empty()){
+                    strMot += '\'';
+                }
+            }
+
+        } else{
+
+            strMot += str;
+        }
+    }
+
+    //Recupère le dernier mot si il n'est pas vide
+    if(!strMot.empty()){
+        vResultat.push_back(strMot);
+    }
+
+    return vResultat;
+
+}
+
+string normaliserMot(string s){
+
+    string strResultat;
+
+    for(auto lettre : s){
+        strResultat += static_cast<char>(tolower(lettre));
+    }
+
+    return strResultat;
 }

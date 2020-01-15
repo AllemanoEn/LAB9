@@ -25,4 +25,6 @@ vector<string> lireTexte(const string& fichier);
 
 vector<string> separerMots(const string& ligne);
 
+string normaliserMot(string s);
+
 #endif //LAB9_LECTURE_H
