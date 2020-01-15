@@ -1,5 +1,5 @@
 /// \file lecture.h
-/// \authors Enzo Allemano, Jonathan Stochetti, Nicolas Viotti
+/// \authors Enzo Allemano, Jonathan Stocchetti, Nicolas Viotti
 /// \date 14.01.2020
 ///
 /// \brief \b Laboratoire \b 09
