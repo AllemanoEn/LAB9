@@ -186,3 +186,22 @@ bool rechercheDichotomiqueRecursive(vector<string>::iterator itDebut, vector<str
     }
     return false;
 }
+
+/// \brief Recherche un mot dans un vecteur qui contient des phrases
+/// \param vDictionnaire : vector qui contient les phrases
+/// \param strMotAChercher : mot à chercher
+/// \return le numéro de la ligne à la quelle le mot se trouve, sinon size_t -1
+size_t recherchePhrase(const vector<string>& vDictionnaire, const string& strMotAChercher){
+
+    int iCpt = 1;
+
+    for(const auto& ligne : vDictionnaire){
+
+        //Test si le mot n'est pas trouvé
+        if(ligne.find(strMotAChercher) != std::string::npos){
+            return iCpt;
+        }
+        iCpt++;
+    }
+    return -1;
+}

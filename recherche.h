@@ -14,6 +14,7 @@
 #define LAB9_RECHERCHE_H
 
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 size_t rechercheLineaire(const vector<string>& vDictionnaire, const string& strMotAChercher);
@@ -29,5 +30,7 @@ size_t rechercheDichotomiqueRecursive(const vector<string>& vDictionnaire, const
 size_t rechercheDichotomiqueRecursive(const vector<string>& vDictionnaire, const string& strMotAChercher, size_t first, size_t last);
 
 bool rechercheDichotomiqueRecursive(vector<string>::iterator itDebut, vector<string>::iterator itFin, const string& strMotAChercher);
+
+size_t recherchePhrase(const vector<string>& vDictionnaire, const string& strMotAChercher);
 
 #endif //LAB9_RECHERCHE_H

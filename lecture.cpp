@@ -33,7 +33,7 @@ vector<string> lecture(const string& strNomDuFichier){
         getline(inputFile,line);
 
         if(!line.empty()){
-            vDictionnaire.push_back(line);
+            vDictionnaire.push_back(normaliserMot(line));
         }
     }
 
@@ -70,14 +70,9 @@ void trier(vector<string>& vDictionnaire){
     }
 }
 
-/**
- lireTexte : lit un fichier texte
-
- @param fichier le nom du fichier à lire
- @return le contenu du fichier sous forme d'un vector
-         de string, chaque string correspondant à une
-         ligne du fichier
- */
+/// \brief lit un fichier texte
+/// \param fichier : le nom du fichier à lire
+/// \return le contenu du fichier sous forme d'un vector de string, chaque string correspondant à une ligne du fichier
 vector<string> lireTexte(const string& fichier){
     vector<string> vLivre;
 
@@ -93,10 +88,7 @@ vector<string> lireTexte(const string& fichier){
 
     while (!inputFile.eof()){
         getline(inputFile,line);
-
-        if(!line.empty()){
-            vLivre.push_back(line);
-        }
+        vLivre.push_back(line);
     }
 
     inputFile.close();
@@ -104,18 +96,14 @@ vector<string> lireTexte(const string& fichier){
     return vLivre;
 }
 
-/**
- separerMots: coupe une ligne en mots. Un mot est
- défini comme une suite de caractères étant soit
- des lettres de 'a' à 'z' ou de 'A' à 'Z', soit
- l'apostrophe qui est utilisée en anglais dans les
- pluriels. Mais un groupe d'apostrophe(s) ne contenant
- aucune lettre n'est pas considéré comme un mot.
-
- @param ligne la ligne de texte à analyser
- @return un vector de string, chaque string contenant
-         un mot distinct.
- */
+/// \brief coupe une ligne en mots. Un mot est
+// défini comme une suite de caractères étant soit
+// des lettres de 'a' à 'z' ou de 'A' à 'Z', soit
+// l'apostrophe qui est utilisée en anglais dans les
+// pluriels. Mais un groupe d'apostrophe(s) ne contenant
+// aucune lettre n'est pas considéré comme un mot.
+/// \param ligne : la ligne de texte à analyser
+/// \return un vector de string, chaque string contenant un mot distinct.
 vector<string> separerMots(const string& ligne){
 
     vector<string> vResultat;
@@ -152,6 +140,9 @@ vector<string> separerMots(const string& ligne){
 
 }
 
+/// \brief Transforme toute les lettres d'un mot en minuscule
+/// \param s mot à transformer
+/// \return le mot transformer
 string normaliserMot(string s){
 
     string strResultat;

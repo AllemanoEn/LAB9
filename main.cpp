@@ -14,6 +14,7 @@
 #include "lecture.cpp"
 
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -25,27 +26,28 @@ void affichageVecteur(const vector<string>& v){
 }
 
 int main() {
-    const string STRNOMDUFICHIER = "../dictionnaire-UNIX/ordered_dictionary.txt";
+    const string STRNOMDUFICHIER = "../dictionnaire-UNIX/dictionary.txt";
     const string STRLIVRE = "../livre/input_sh.txt";
     vector<string> vDico = lecture(STRNOMDUFICHIER);
     vector<string> vLivre = lireTexte(STRLIVRE);
     vector<string> vLivreFormate;
     vector<string> vMotAMot;
 
-    size_t valeur = -1;
+    //Trie le dictionnaire avec sort
+    sort(vDico.begin(),vDico.end());
 
-    trier(vLivreFormate);
-
+    //Le dictionnaire doit existé et être rempli, pareil pour le livre
     if(!vDico.empty() && !vLivre.empty()){
 
-        for(const auto& str : vLivre){
-            vMotAMot = separerMots(str);
+        for(const auto& strLigne : vLivre){
+            vMotAMot = separerMots(strLigne);
             vLivreFormate.insert(vLivreFormate.end(),vMotAMot.begin(),vMotAMot.end());
         }
 
         for(const auto& mot : vLivreFormate) {
-            if (valeur == rechercheDichotomique(vDico, normaliserMot(mot))) {
-                cout << rechercheLineaire(vLivreFormate, mot) << " : " << mot << endl;
+            //Le mot n'a pas été trouvé si rechercheDichotomique retourne size_t -1 (size_t -1 = 4294967295) donc si le résultat est plus grand que la taille de vDico.
+            if (vDico.size() < rechercheDichotomique(vDico, normaliserMot(mot))) {
+                cout << recherchePhrase(vLivre, mot) << " : " << mot << endl;
             }
         }
     }
